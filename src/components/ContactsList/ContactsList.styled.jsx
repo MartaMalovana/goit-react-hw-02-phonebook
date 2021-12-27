@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 export const ContactsTitle = styled.h2`
-    text-align: left;
 `;
 
 export const Contact = styled.p`
     text-align: left;
+    margin: 0;
 `;
 
 export const Container = styled.div`

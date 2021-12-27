@@ -45,7 +45,8 @@ label {
 }
 
 #name,
-#tel {
+#tel,
+#filter {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
@@ -53,6 +54,10 @@ label {
   width: 100%;
   height: 30px;
   min-width: 100px;
+}
+
+#filter {
+  width: calc(100% / 2);
 }
 
 #name:focus,
@@ -82,7 +87,8 @@ label {
 }
 
 #title-name,
-#title-tel {
+#title-tel,
+#title-filter {
   text-align: center;
   margin: 0;
 }
@@ -93,4 +99,8 @@ form {
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
+}
+
+#contacts-title {
+  text-align: left;
 }

@@ -1,13 +1,15 @@
 import React, {Component} from "react";
-import {ContactsTitle, Contact, Container} from './ContactsList.styled';
-import { nanoid } from 'nanoid';
+import {Contact, Container} from './ContactsList.styled';
 
 export default class ContactsList extends Component {
+    
     render () {
+        console.log(this.props.data);
         return (
             <Container>
-                <ContactsTitle>Contacts</ContactsTitle>
-                {this.props.contacts.map(contact => ({name: contact, id: nanoid()})).map(el => <Contact key={el.id}>{el.name}</Contact>)}
+                {this.props.data
+                .map(contact =><Contact key={contact.key}>{contact.name}: {contact.number}</Contact>)
+                }
             </Container>
         );
     };
