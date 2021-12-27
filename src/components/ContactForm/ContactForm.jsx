@@ -7,12 +7,18 @@ export default class ContactForm extends Component {
     number: ''
     };
 
-    handleChange = event => {
+    handleChangeName = event => {
       this.setState ({
-       [event.currentTarget.name]:  event.currentTarget.value,
+       name:  event.currentTarget.value,
       });
     };
      
+    handleChangeNumber = (event) => {
+          this.setState ({
+             number:  event.currentTarget.value,
+          });
+    };
+    
     handleSubmit = (event) => {
       event.preventDefault();
       this.props.formSubmit({newName: this.state.name, newNumber: this.state.number});
@@ -31,7 +37,7 @@ export default class ContactForm extends Component {
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 autoComplete="off"
-                onChange={this.handleChange}
+                onChange={this.handleChangeName}
                 value={this.state.name}
               >
               </input>
@@ -47,7 +53,7 @@ export default class ContactForm extends Component {
                 placeholder="095-555-55-55"
                 required
                 autoComplete="off"
-                onChange={this.handleChange}
+                onChange={this.handleChangeNumber}
                 value={this.state.number}
               />
             </label>

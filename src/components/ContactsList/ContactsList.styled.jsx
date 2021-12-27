@@ -13,3 +13,11 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
+export const ContactContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const Button = styled.button`
+    margin-left: 10px;
+`;

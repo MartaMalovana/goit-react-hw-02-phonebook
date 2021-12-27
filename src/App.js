@@ -18,9 +18,10 @@ export default class App extends Component {
    };
 
   addContact = ({newName, newNumber}) => {
-    this.setState(prev => {
-      return {contacts: [...prev.contacts, {name: newName, number: newNumber, key: nanoid()}]};
-    });
+        this.setState(prev => {
+          return {contacts: [...prev.contacts, {name: newName, number: newNumber, key: nanoid()}]
+          };
+        });
   };
 
   getFilteredContacts = () => {
@@ -30,17 +31,24 @@ export default class App extends Component {
     );
   }
 
+  deleteContact = (name) => {
+    this.setState(prev => {
+      const newContacts = prev.contacts.filter(contact => contact.name !== name);
+      return {contacts: newContacts};
+    });
+  }
+
   render () {
     const filteredContacts = this.getFilteredContacts();
     return (
       <div className="App">
         
         <h2 id="title-phonebook">Phonebook</h2>
-        <ContactForm formSubmit={this.addContact}></ContactForm>
+        <ContactForm formSubmit={this.addContact} contactArr={this.state.contacts}></ContactForm>
         
         <h2 id='contacts-title'>Contacts</h2>
         <Filter onChange={this.handleChange} filter={this.state.filter}></Filter>
-        <ContactsList data={filteredContacts}></ContactsList>
+        <ContactsList data={filteredContacts} delete={this.deleteContact}></ContactsList>
 
       </div>
     );
