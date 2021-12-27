@@ -1,14 +1,14 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 import {Contact, Container, ContactContainer, Button} from './ContactsList.styled';
 
 export default class ContactsList extends Component {
     
     clickOnDelete = event => {
         this.props.delete(event.target.name);
-    }
+    };
 
     render () {
-        console.log(this.props.data);
         return (
             <Container>
                 {this.props.data
@@ -24,4 +24,9 @@ export default class ContactsList extends Component {
             </Container>
         );
     };
+};
+
+ContactsList.propTypes = {
+    delete: PropTypes.func,
+    data: PropTypes.arrayOf(PropTypes.shape)
 };

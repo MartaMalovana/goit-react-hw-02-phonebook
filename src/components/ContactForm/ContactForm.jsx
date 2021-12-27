@@ -9,8 +9,12 @@ export default class ContactForm extends Component {
 
     handleChangeName = event => {
       this.setState ({
-       name:  event.currentTarget.value,
-      });
+        name:  event.currentTarget.value,
+       });
+
+      this.props.contactArr.find(contact => contact.name === event.currentTarget.value) &&
+      alert(`${event.currentTarget.value} is already in contacts!`);
+     
     };
      
     handleChangeNumber = (event) => {
@@ -18,13 +22,15 @@ export default class ContactForm extends Component {
              number:  event.currentTarget.value,
           });
     };
-    
+
     handleSubmit = (event) => {
       event.preventDefault();
-      this.props.formSubmit({newName: this.state.name, newNumber: this.state.number});
+      const {name, number} = this.state;
+      this.props.formSubmit({newName: name, newNumber: number});
       this.setState({name: "", number: ""});
     }
     render () {
+      const {name, number} = this.state;
         return (<form onSubmit={this.handleSubmit}>
             <label> 
               <h3 id="title-name">Name</h3>
@@ -38,7 +44,7 @@ export default class ContactForm extends Component {
                 required
                 autoComplete="off"
                 onChange={this.handleChangeName}
-                value={this.state.name}
+                value={name}
               >
               </input>
             </label>
@@ -54,7 +60,7 @@ export default class ContactForm extends Component {
                 required
                 autoComplete="off"
                 onChange={this.handleChangeNumber}
-                value={this.state.number}
+                value={number}
               />
             </label>
             <button id="add-name" type="submit">Add contact</button>
